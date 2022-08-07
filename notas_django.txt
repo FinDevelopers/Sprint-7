@@ -63,6 +63,9 @@ DJANGO
 - Ejecutar python manage.py createsuperuser
 - Ingresar datos
 - Ir a http://127.0.0.1:8000/admin y logearse
+	Proyecto
+- user: admin 
+- contra: admin
 
 10) EMPROLIJAR ADMIN ?
 - En nombreApp/apps.py, en la clase nombreAppConfig agregar el campo verbose_name = 'nombreAppProlijo'
