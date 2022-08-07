@@ -73,11 +73,44 @@ DJANGO
 - Agregar los campos verbose_name, verbose_name_plural y ordering
 - Agregar a cada columna de la tabla, el parámetro verbose_name="nombreColumnaProlijo"
 - Agregar el método __str__(self): return (lo que se quiera devolver)
+- Importar en admin.py el model: from .models import nombreModel
+- Agregar en admin.py: admin.site.register(nombreModel)
 
-12) SUBIR ARCHIVOS
+11.5) MOSTRAR CAMPOS DE SOLO LECTURA EN ADMIN ?
+- En admin.py de la app importar el model: from .models import nombreModel
+- Crear la clase nombreModelAdmin(admin.ModelAdmin)
+- Agregar el atributo readonly_field = ('nombreCampo1','nombreCampo2', ... ,'nombreCampoN')
+
+12) SUBIR ARCHIVOS COMO COLUMNA DE TABLA ???
+- CASO IMG: ejecutar python -m pip install Pillow en el venv, crear columnas como -> models.ImageField()
 - Crear la carpeta media en el root del proyecto
 - Añadir en settings.py MEDIA_URL = '/media/' y MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 - En urls.py del proyecto importar: from django.conf import settings
 - Agregar-> if settings.DEBUG:
 		from django.conf.urls.static import static
 		urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+13) LLAMAR MODEL DESDE VISTA
+- En el archivo views.py de la app, importar el modelo: from .models import nombreModel
+- Dentro de la vista, almacenar en una variable registros de la tabla del mode. ej.: registros = nombreModel.objects.all()
+- Pasar como parámetro en el render del return, el diccionario {'registros': registros}
+- Para iterar sobre los registros en el template, usar {%for registro in registros%}, luego <h1>{{registro.title}}</h1> {%endfor%}
+
+14) CREAR FORMULARIO (PARA UN MODEL ?)  H
+- Crear en la app un archivo forms.py
+- Importar forms: from django import forms
+- Crear la clase nombreModelForm(forms.Form), y agregar atributos. ej.: name = forms.CharField()
+- Importar en views.py el form: fro, .forms import nombreModelForm
+- Crear en la función de la vista donde va a estar el form, la variable form= nombreModelForm
+- Agregar al render del return el diccionario {'form': form} como parámetro 
+- Crear en el template al que se hacer render, una etiqueta form y adentro el tag {{form.as_p}} para generar el form como párrafo
+- Agregar un input type="submit" dentro del form
+- Agregar dentro del form el tag {{csrf_token}} por seguridad
+- En la función de la vista, validar la request: if request.method = "POST"/"GET":, y también if form.is_valid():
+- Almacenar los valores de la request. ej.; name = request.POST.get('name','')
+- Redirigir de vuelta a la página: return redirect(reverse('nombreVista')+"?param1+?param2+...+?paramN")
+
+
+
+
+
