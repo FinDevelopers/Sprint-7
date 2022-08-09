@@ -1,0 +1,29 @@
+{%extends "Tarjetas/base.html"%}
+{%block titulo%} Formulario {%endblock titulo%}
+{%block usuario_nombre%} {{usuario_nombre}} {%endblock usuario_nombre%}
+{%block content%}
+<!-- <form method="POST" action="">
+    <div class="input-group mb-3">
+        <select class="form-select" id="tipo_prestamo" name="tipo_prestamo">
+          <option selected>Choose...</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <label class="input-group-text" for="tipo_prestamo">Tipo Prestamo</label>
+      </div>
+    <div class="mb-3">
+      <label for="fecha_inicio" class="form-label">Fecha de inicio</label>
+      <input type="date" class="form-control" name="fecha_inicio">
+    </div>
+    <div class="mb-3">
+        <label for="monto" class="form-label">Monto</label>
+        <input type="number" class="form-control" name="monto">
+      </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form> -->
+  <form action="" method="POST">
+    <table>{{prestamo_form.as_p}}</table>
+    <input type="submit" value="Enviar">
+</form>
+{%endblock content%}

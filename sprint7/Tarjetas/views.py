@@ -1,5 +1,7 @@
 from django.shortcuts import render
-
+from .models import Tarjeta
 # Create your views here.
-def vista1(request):
-    return render(request, 'Tarjetas/index.html')
+def tarjeta(request):
+    usuario_nombre = "Armando Paredes"
+    tarjetas = Tarjeta.objects.all().filter(card_customer=7)
+    return render(request, 'Tarjetas/tarjeta.html', {"usuario_nombre": usuario_nombre, "tarjetas": tarjetas})
