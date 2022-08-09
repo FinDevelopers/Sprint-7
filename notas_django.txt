@@ -52,7 +52,7 @@ DJANGO
 - Para los links basta con usar el tag url: <a href="{%url 'home'%}"></a>
 
 8) CREAR MODEL
-- Importar models en el archivo models.py de la app: from django.shortcuts import models
+- Importar models en el archivo models.py de la app: from django.db import models
 - Crear la clase: class NombreClase(models.Model):
 - Agregar atributos con sus respectivos tipos. ej.; title = models.CharField(max_length=40), num = models.IntgerField()
 - Ejecutar py manage.py makemigrations nombreApp y py manage.py migrate nombreApp, para aplicar los cambios en la BBDD
@@ -73,8 +73,7 @@ DJANGO
 - Agregar los campos verbose_name, verbose_name_plural y ordering
 - Agregar a cada columna de la tabla, el parámetro verbose_name="nombreColumnaProlijo"
 - Agregar el método __str__(self): return (lo que se quiera devolver)
-- Importar en admin.py el model: from .models import nombreModel
-- Agregar en admin.py: admin.site.register(nombreModel)
+
 
 11.5) MOSTRAR CAMPOS DE SOLO LECTURA EN ADMIN ?
 - En admin.py de la app importar el model: from .models import nombreModel
@@ -96,7 +95,7 @@ DJANGO
 - Pasar como parámetro en el render del return, el diccionario {'registros': registros}
 - Para iterar sobre los registros en el template, usar {%for registro in registros%}, luego <h1>{{registro.title}}</h1> {%endfor%}
 
-14) CREAR FORMULARIO (PARA UN MODEL ?)  H
+14) CREAR FORMULARIO 
 - Crear en la app un archivo forms.py
 - Importar forms: from django import forms
 - Crear la clase nombreModelForm(forms.Form), y agregar atributos. ej.: name = forms.CharField()
@@ -105,10 +104,33 @@ DJANGO
 - Agregar al render del return el diccionario {'form': form} como parámetro 
 - Crear en el template al que se hacer render, una etiqueta form y adentro el tag {{form.as_p}} para generar el form como párrafo
 - Agregar un input type="submit" dentro del form
-- Agregar dentro del form el tag {{csrf_token}} por seguridad
-- En la función de la vista, validar la request: if request.method = "POST"/"GET":, y también if form.is_valid():
+- Agregar dentro del form el tag {%csrf_token%} por seguridad
+- En la función de la vista, validar la request: if request.method = "POST"/"GET":
+- Crear el form como: form = nombreForm(request.POST) y validar con if form.is_valid():
 - Almacenar los valores de la request. ej.; name = request.POST.get('name','')
 - Redirigir de vuelta a la página: return redirect(reverse('nombreVista')+"?param1+?param2+...+?paramN")
+
+14.5) CREAR FORMULARIO PARA UN MODEL
+- En forms.py, importar ModelForm: from django.forms import ModelForm
+- Crear la clase nombreModelForm(ModelForm)
+- Agregarle adentro la clase Meta: Class Meta:, y agregarle los atributos model = nombre Model, y fields = ['campo1',...'campoN']
+- En views.py imporar la clase: from .forms import nombreModelForm
+- Instanciarlo como: form = nombreModelForm() y pasarlo como parámetro en el diccionario de context a la función render
+- Crear un <form></form> en la plantilla con método post y agregarle {%csfr token%}, {{form.as_p}}, y un <input type="submit">
+- Para recibir el form, en la view validar if request.method=='POST'y crear form = nombreModelForm(request.POST)
+- Finalmente validar if form.is_valid():, guadar en la bd con form.save()
+
+15) LOG IN
+- Crear usuario desde admin
+- Agregar a urlpatterns del urls.py del proyecto, el path: path('cuentas/',include('django.contrib.auth.urls'))
+- Crear la app registration: py manage.py startapp registration
+- Agregar la app a INSTALLED_APPS de settings.py: "registration"
+- Crear en registrations la carpeta templates, dentro de templates la carpeta registration, y dentro de registration el archivo login.html
+- Crear en el index un form action="post", con un input type="text" name="username", un <input type="password" name="password", y un submit 
+- Agregar en settigs.py, la constante LOGIN_REDIRECT_URL = '/urlPaginaInicio'
+- También agregar la constante LOGOUT_REDIRECT_URL = '/urlPagina' para el cierre de sesión
+- Para obtener el nomrbe usuario en las views, usar request.user
+
 
 
 
