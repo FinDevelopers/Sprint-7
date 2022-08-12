@@ -14,6 +14,7 @@ class Sucursal(models.Model):
     class Meta:
         managed = False
         db_table = 'sucursal'
+        verbose_name = 'Sucursal'
 
 class TipoCliente(models.Model):
     clt_id = models.AutoField(primary_key=True, null=False)
@@ -25,6 +26,7 @@ class TipoCliente(models.Model):
     class Meta:
         managed = False
         db_table = 'tipo_cliente'
+        verbose_name = 'Tipo Cliente'
 
 
 class Cliente(models.Model):
@@ -33,14 +35,13 @@ class Cliente(models.Model):
     customer_surname = models.TextField()  # This field type is a guess.
     customer_dni = models.TextField(db_column='customer_DNI')  # Field name made lowercase.
     dob = models.TextField(blank=True, null=True)
-    branch = models.ForeignKey(Sucursal,  on_delete=models.DO_NOTHING)
-    a = models.TextField()  # This field type is a guess.
-    #client_type =  models.ForeignKey(TipoCliente, on_delete=models.DO_NOTHING)
+    branch = models.ForeignKey(Sucursal,  on_delete=models.DO_NOTHING, null=True, blank=True)
+    client_type =  models.ForeignKey(TipoCliente, on_delete=models.DO_NOTHING, null=True, blank=True)
     
-    #user_id = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, verbose_name = 'Usuario', related_name='cliente')
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'cliente'
         verbose_name = 'Cliente'
 
