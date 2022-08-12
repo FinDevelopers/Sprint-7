@@ -36,7 +36,7 @@ class Cliente(models.Model):
     customer_dni = models.TextField(db_column='customer_DNI')  # Field name made lowercase.
     dob = models.TextField(blank=True, null=True)
     branch = models.ForeignKey(Sucursal,  on_delete=models.DO_NOTHING, null=True, blank=True)
-    client_type =  models.ForeignKey(TipoCliente, on_delete=models.DO_NOTHING, null=True, blank=True)
+    client_type =  models.ForeignKey(TipoCliente, on_delete=models.DO_NOTHING, null=True, blank=True, verbose_name='Tipo cliente')
     
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, verbose_name = 'Usuario', related_name='cliente')
 
@@ -44,6 +44,7 @@ class Cliente(models.Model):
         managed = True
         db_table = 'cliente'
         verbose_name = 'Cliente'
+
 
 
     
