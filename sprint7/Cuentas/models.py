@@ -1,5 +1,6 @@
-from tabnanny import verbose
 from django.db import models
+
+from Clientes.models import Cliente
 
 # Create your models here.
 class TipoCuenta(models.Model):
@@ -19,9 +20,8 @@ class TipoCuenta(models.Model):
 
 class Cuenta(models.Model):
     account_id = models.AutoField(primary_key=True, verbose_name='ID')
-    customer_id = models.IntegerField(verbose_name='usuario')
-    #account_type = models.ForeignKey(TipoCuenta, models.DO_NOTHING, db_column='account_type', verbose_name='Tipo de Cuenta', related_name='cuentas')
-    account_type = models.IntegerField()
+    customer = models.ForeignKey(Cliente, models.CASCADE, verbose_name='usuario', related_name='cuentas')
+    account_type = models.ForeignKey('TipoCuenta', models.DO_NOTHING,  db_column='account_type', verbose_name='Tipo de Cuenta', related_name='cuentas')
     balance = models.IntegerField(verbose_name='balance')
     iban = models.TextField(verbose_name='Código Internacional de Cuentas Bancarias')
 
