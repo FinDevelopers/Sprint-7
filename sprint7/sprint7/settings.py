@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'Login',
     'Prestamos',
     'Tarjetas',
-    'registration'
 ]
 
 MIDDLEWARE = [
@@ -130,5 +129,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-LOGIN_REDIRECT_URL = '/tarjeta'
 LOGOUT_REDIRECT_URL = '/accounts/login'

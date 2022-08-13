@@ -15,17 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from Tarjetas import views as tarjetas
+from Clientes import views as clientes
 from Login import views as login
 from Prestamos import views as prestamos
 from django.contrib.auth import views as auth
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('tarjeta/', tarjetas.tarjeta, name="Tarjeta"),
-    #path('login/', login.login, name="Login"),
+    path('index/', clientes.index, name="Index"),
     path('formularios/', prestamos.formularios, name="Formularios"),
     path('accounts/',include('django.contrib.auth.urls')),
     path('logout/', auth.LogoutView.as_view() , name="Logout"),
-    path('login/', auth.LoginView.as_view() , name="Login"),
+    path('login/', login.login_view , name="Login"),
 ]
