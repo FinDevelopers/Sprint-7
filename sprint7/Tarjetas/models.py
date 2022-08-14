@@ -21,8 +21,8 @@ class Tarjeta(models.Model):
     brand = models.ForeignKey(MarcaTarjeta, models.DO_NOTHING, db_column='card_brand', verbose_name='marca', related_name='tarjetas')
     card_number = models.TextField(unique=True, verbose_name='número')
     card_cvv = models.IntegerField(verbose_name='código valor de validación')
-    card_from_date = models.DateTimeField(verbose_name='fecha de expedición')
-    card_expiration_date = models.DateTimeField(verbose_name='fecha de expiración')
+    card_from_date = models.DateTimeField(null=True, verbose_name='fecha de expedición')
+    card_expiration_date = models.DateTimeField(null=True, verbose_name='fecha de expiración')
     card_type = models.TextField(verbose_name='tipo', choices=[('credit','Crédito'),('debit','Débito')])
     customer = models.ForeignKey(Cliente, models.CASCADE, verbose_name='cliente', related_name='tarjetas')
 
