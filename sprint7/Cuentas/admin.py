@@ -9,7 +9,7 @@ admin.site.register(TipoCuenta, TipoCuentaAdmin)
 
 
 class CuentaAdmin(admin.ModelAdmin):
-    list_display = ['account_id', 'iban', 'customer', 'account_type']
+    list_display = ['account_id', 'iban', 'customer', 'account_type','balance_con_formato']
     list_display_links = ['iban']
 admin.site.register(Cuenta, CuentaAdmin)
 

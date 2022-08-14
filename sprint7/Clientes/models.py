@@ -58,9 +58,6 @@ class Cliente(models.Model):
         ordering = ['customer_id']
 
 
-
-
-
 class Empleado(models.Model):
     employee_id = models.AutoField(primary_key=True, verbose_name='ID')
     employee_name = models.TextField(verbose_name='nombre')
