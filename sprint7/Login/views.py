@@ -18,7 +18,9 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return render(request, 'Login/Login.html')
+    #Acá se puede crear un template para cuando desloguea
+    return redirect('Login')
+    
 #Agregar css + imágenes del sprint 1 + js en static de clientes
 #En el index llamar a user.cliente.tarjetas.all() y mostrarlas en el div de las tarjetas, lo mismo con cuentas
 #En el form de prestamos, en la view despues del submit crear un Prestamo, y asignarle prestamo.type, prestamo.customer_id, etc. y hacer prestamo.save(), validar con user.client.client_type.get()
