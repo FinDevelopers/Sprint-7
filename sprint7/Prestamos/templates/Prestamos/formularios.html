@@ -1,29 +1,24 @@
+
 {%extends "Clientes/base.html"%}
+{%load static%}
 {%block titulo%} Formulario {%endblock titulo%}
 {%block usuario_nombre%} {{usuario_nombre}} {%endblock usuario_nombre%}
+{%block links%} <link rel="stylesheet" href="{%static 'Clientes/css/index.css'%}"> 
+<link rel="stylesheet" href="{%static 'Prestamos/css/formulario.css'%}">
+{%endblock links%}
 {%block content%}
-<!-- <form method="POST" action="">
-    <div class="input-group mb-3">
-        <select class="form-select" id="tipo_prestamo" name="tipo_prestamo">
-          <option selected>Choose...</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-        <label class="input-group-text" for="tipo_prestamo">Tipo Prestamo</label>
-      </div>
-    <div class="mb-3">
-      <label for="fecha_inicio" class="form-label">Fecha de inicio</label>
-      <input type="date" class="form-control" name="fecha_inicio">
+<form action="" method="POST"> {%csrf_token%}
+<div class="container Formulario">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title  text-center">Pide un préstamo</h5>
+      <p class="card-text  text-center">Obtén un préstamo en el primer intento, ahórrate problemas, dinero y tiempo</p>
+        <div class="">{{prestamo_form.as_p}}</table>
     </div>
-    <div class="mb-3">
-        <label for="monto" class="form-label">Monto</label>
-        <input type="number" class="form-control" name="monto">
-      </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form> -->
-  <form action="" method="POST"> {%csrf_token%}
-    <table>{{prestamo_form.as_p}}</table>
-    <input type="submit" value="Enviar">
+    <div class="card-footer">
+      <input type="submit" class="btn btn-primary" value="Pedir">
+    </div>
+  </div>
+</div>
 </form>
 {%endblock content%}

@@ -36,7 +36,7 @@
                       <form action="" method="POST">{%csrf_token%}
       
                         <div class="d-flex align-items-center mb-5 pb-1">
-                            <a href="index.html"><img src="{%static 'Login/img/itbank-logo-dark.svg'%}" alt="itbank logo"></a>
+                            <a href="{% url 'Home'%}"><img src="{%static 'Login/img/itbank-logo-dark.svg'%}" alt="itbank logo"></a>
                         </div>
       
                         <h1 class=" mb-3 pb-3" >¡Ingresa a tu cuenta!</h1>
