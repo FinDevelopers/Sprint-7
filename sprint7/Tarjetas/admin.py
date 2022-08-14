@@ -10,6 +10,6 @@ admin.site.register(MarcaTarjeta,MarcaTarjetaAdmin)
 
 
 class TarjetaAdmin(admin.ModelAdmin):
-    list_display = ['card_id','card_number','customer','brand','card_type','card_from_date']
+    list_display = ['card_id','card_number','customer','brand','card_type']
     list_display_links = ['card_number']
 admin.site.register(Tarjeta,TarjetaAdmin)

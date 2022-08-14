@@ -18,13 +18,12 @@ from django.urls import path, include
 from Clientes import views as clientes
 from Login import views as login
 from Prestamos import views as prestamos
-from django.contrib.auth import views as auth
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', clientes.index, name="Index"),
     path('formularios/', prestamos.formularios, name="Formularios"),
     path('accounts/',include('django.contrib.auth.urls')),
-    path('logout/', auth.LogoutView.as_view() , name="Logout"),
+    path('logout/', login.logout_view , name="Logout"),
     path('login/', login.login_view , name="Login"),
 ]
