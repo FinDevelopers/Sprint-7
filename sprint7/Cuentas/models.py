@@ -28,9 +28,9 @@ class Cuenta(models.Model):
 
     def saldo_con_formato(self):
         if self.balance >= 0:
-            return '$' + str(self.saldo_total()).replace('.',',')
+            return 'AR$' + str(self.saldo_total()).replace('.',',')
         else:
-            return '-$' + str(-self.saldo_total()).replace('.',',')
+            return '-AR$' + str(-self.saldo_total()).replace('.',',')
 
     def enviar_transferencia(self, otro, monto):
         if not isinstance(otro,Cuenta):

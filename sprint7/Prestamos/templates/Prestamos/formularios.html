@@ -1,4 +1,4 @@
-{%extends "Tarjetas/base.html"%}
+{%extends "Clientes/base.html"%}
 {%block titulo%} Formulario {%endblock titulo%}
 {%block usuario_nombre%} {{usuario_nombre}} {%endblock usuario_nombre%}
 {%block content%}
@@ -22,7 +22,7 @@
       </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form> -->
-  <form action="" method="POST">
+  <form action="" method="POST"> {%csrf_token%}
     <table>{{prestamo_form.as_p}}</table>
     <input type="submit" value="Enviar">
 </form>
