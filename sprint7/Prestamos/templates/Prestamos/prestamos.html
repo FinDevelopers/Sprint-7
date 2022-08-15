@@ -6,10 +6,10 @@
 <link rel="stylesheet" href="{%static 'Prestamos/css/formulario.css'%}">{%endblock links%}
 {%block content%}
 
-<div class="alinear">
-    <div class="container prestamos">
-       <h1>Préstamos</h1>
-       <span class="text-success">{{success_message}}</span>
+<div class="mt-5 px-3">
+    <div class="container-fluid prestamos">
+       <h1 class="text-center mb-3">Préstamos</h1>
+       <h2 class="text-success text-center mb-3">{{success_message}}</h2>
         <table class="table table-striped table-dark">
             <thead class="thead-ligh">
               <tr>
@@ -28,7 +28,10 @@
             {%endfor%}
             </tbody>
           </table>
-          <a class="btn btn-primary" href="{%url 'Formularios' %}">Pedir prestamo</a>
+          <div class="d-flex flex-row-reverse">
+            <a class="btn btn-primary" href="{%url 'Formularios' %}">Pedir prestamo</a>
+          </div>
+          
     </div>
 </div>
 {%endblock content%}

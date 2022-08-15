@@ -15,6 +15,7 @@ def formularios(request):
         prestamo_form = PrestamoForm(request.POST)
         if prestamo_form.is_valid():
             monto =  float(request.POST.get('monto')) * 100
+            cuenta = request.user.cliente.cuentas.get(account_type = 3)
             tipo_cliente = request.user.cliente.client_type.clt_name
             if tipo_cliente == 'Classic' and monto > 10000000:
                 error_message = "Su tipo de cuenta 'Classic' tiene un límite de $100.000,00 para préstamos."
