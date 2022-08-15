@@ -2,15 +2,31 @@
 {%load static%}
 {%block titulo%} Prestamos {%endblock titulo%}
 {%block usuario_nombre%} {{usuario_nombre}} {%endblock usuario_nombre%}
-{%block links%} <link rel="stylesheet" href="{%static 'Clientes/css/index.css'%}"> {%endblock links%}
+{%block links%} <link rel="stylesheet" href="{%static 'Clientes/css/index.css'%}"> 
+<link rel="stylesheet" href="{%static 'Prestamos/css/formulario.css'%}">{%endblock links%}
 {%block content%}
 
-
-{%for prestamo in prestamos%}
-    <p>{{prestamo.get_loan_type_display}}</p>
-    <p>{{prestamo.loan_date}}</p>
-    <p>{{prestamo.monto_con_formato}}</p>
-    
-{%endfor%}
-<a class="btn btn-primary" href="{%url 'Formularios' %}">Pedir prestamo</a>
+<div class="alinear">
+    <div class="container prestamos">
+        <table class="table table-striped table-dark">
+            <thead class="thead-ligh">
+              <tr>
+                <th scope="col" class="text-uppercase">Tipo De Préstamo</th>
+                <th scope="col" class="text-uppercase">Fecha</th>
+                <th scope="col" class="text-uppercase">Monto</th>
+              </tr>
+            </thead>
+            <tbody>
+                {%for prestamo in prestamos%}  
+                <tr>
+                    <td>{{prestamo.get_loan_type_display}}</td>
+                    <td>{{prestamo.loan_date}}</td>
+                    <td>{{prestamo.monto_con_formato}}</td>
+                  </tr>
+            {%endfor%}
+            </tbody>
+          </table>
+          <a class="btn btn-primary" href="{%url 'Formularios' %}">Pedir prestamo</a>
+    </div>
+</div>
 {%endblock content%}

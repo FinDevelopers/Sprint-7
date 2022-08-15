@@ -1,6 +1,6 @@
 :root{
     --text: #6A6D9E;
-    -primario: #3858FB;
+    --primario: #3858FB;
 }
 
 .container{
@@ -40,4 +40,13 @@ input, select{
     .container{
         width: 80%;
     }
+}
+
+
+/* PRESTAMOS */
+.alinear{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
