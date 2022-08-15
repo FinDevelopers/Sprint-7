@@ -18,7 +18,7 @@ from django.urls import path, include
 from Clientes import views as clientes
 from Login import views as login
 from Prestamos import views as prestamos
-
+from Tarjetas import views as tarjetas
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', clientes.index, name="Index"),
@@ -29,4 +29,7 @@ urlpatterns = [
     path('registration/', login.registration , name="Registration"),
     path('', login.home , name="Home"),
     path('prestamos/', prestamos.prestamos, name="Prestamos"),
+    path('tarjetas/', tarjetas.tarjetas, name="Tarjetas"),
+    path('formulario-tarjeta/', tarjetas.formulario, name="Formulario-tarjeta")
+
 ]

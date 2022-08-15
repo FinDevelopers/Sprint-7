@@ -10,7 +10,7 @@ import random
 
 # Create your views here.
 def home(request):
-    return render(request, 'Login/Home.html')
+    return render(request, 'Login/home.html')
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
