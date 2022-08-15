@@ -8,5 +8,9 @@ class RegistrationForm(UserCreationForm):
     mail = forms.EmailField(label="Mail", max_length=100, required=True)
     dni = forms.IntegerField(label="DNI", required=True, min_value=0)
     dob = forms.DateField(label="Fecha de Nacimiento", required=True)
-    branch = forms.ModelChoiceField(queryset=Sucursal.objects.all(),  label="Sucursal", required=True)
+    branch = forms.ModelChoiceField(queryset=Sucursal.objects.all().order_by('branch_name'),  label="Sucursal", required=True)
     client_type = forms.ModelChoiceField(queryset=TipoCliente.objects.all(), label="Tipo de Cliente", required=True)
+
+    widgets = {
+            'name': forms.Textarea(attrs={'cols': 80, 'rows': 20}),
+        }
