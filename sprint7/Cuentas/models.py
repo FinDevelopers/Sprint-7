@@ -39,13 +39,18 @@ class Cuenta(models.Model):
             raise TypeError(f"El parámtero 'monto' debe ser de tipo 'int' y es de tipo '{otro.__class__.__name__}'")
         if monto > self.balance:
             raise ValueError(f'Saldo insuficiente')
-        
+
         self.balance -= monto
         self.save()
         Movimiento(movement_total=monto, movement_type='transf_env', customer=self.customer).save()
         otro.balance += monto
         otro.save()
         Movimiento(movement_total=monto, movement_type='transf_recib', customer=otro.customer).save()
+
+    def recibir_prestamo(self,monto):
+        self.balance += monto
+        self.save()
+        Movimiento(movement_total=monto, movement_type='prestamo', customer=self.customer).save()
 
     def __str__(self):
         return f"Cuenta nro."+str(self.account_id)
@@ -60,7 +65,7 @@ class Cuenta(models.Model):
 class Movimiento(models.Model):
     movement_id = models.AutoField(primary_key=True, verbose_name='ID')
     movement_total = models.IntegerField(verbose_name='monto')
-    movement_type = models.TextField(verbose_name='tipo',choices=[('transf_recib','Transferencia Recibida'),('transf_env','Transferencia Enviada'),('efectivo_ing','Ingreso Efectivo'),('efectivo_eg','Egreso Efectivo')])
+    movement_type = models.TextField(verbose_name='tipo',choices=[('transf_recib','Transferencia Recibida'),('transf_env','Transferencia Enviada'),('efectivo_ing','Ingreso Efectivo'),('efectivo_eg','Egreso Efectivo'),('prestamo','Préstamo Recibido')])
     movement_datetime = models.DateTimeField(verbose_name='fecha', auto_now_add=True)
     customer = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='movimientos', verbose_name='cliente')
 

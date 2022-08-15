@@ -13,10 +13,11 @@
     <div class="card-body">
       <h1 class="card-title  text-center">Pide un préstamo</h5>
       <p class="card-text  text-center">Obtén un préstamo en el primer intento, ahórrate problemas, dinero y tiempo</p>
-        <div class="">{{prestamo_form.as_p}}</table>
+        <div class="">{{prestamo_form.as_p}}</div>
+        <span class="text-danger">{{error_message}}</span>
     </div>
     <div class="card-footer">
-      <input type="submit" class="btn btn-primary" value="Pedir">
+      <input type="submit" class="btn btn-primary w-100" value="Pedir">
     </div>
   </div>
 </div>

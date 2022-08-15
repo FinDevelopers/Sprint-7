@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from .forms import RegistrationForm 
+from .forms import RegistrationForm 
+from django.contrib.auth.models import User
+from Cuentas.models import Cliente, Cuenta
 
 # Create your views here.
 def home(request):
@@ -17,6 +21,29 @@ def login_view(request):
 
 
     return render(request, 'Login/Login.html')
+
+def registration(request):
+    form = RegistrationForm()
+    if request.method == 'POST':
+        form = (RegistrationForm(request.POST))
+        if form.is_valid():
+            user = User()
+            user.username = request.POST.get('username')
+            user.password = request.POST.get('password2')
+            user.first_name = request.POST.get('name')
+            user.last_name = request.POST.get('surname')
+            user.email = request.POST.get('mail')
+            user.save()
+
+            cliente = Cliente()
+            cliente.customer_name = request.POST.get('name')
+            cliente.customer_surname = request.POST.get('surname')
+            cliente.customer_dni = request.POST.get('customer_dni')
+            cliente.dob = request.POST.get('dob')
+
+
+            
+    return render(request, 'Login/registration.html', {'form': form})
 
 def logout_view(request):
     logout(request)
