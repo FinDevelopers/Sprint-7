@@ -257,12 +257,12 @@ body{
 }
 
 .value-increase{
-    color: rgb(21, 207, 80);
+    color: rgb(21, 207, 80) !important;
     font-weight: bold;
 }
 
 .value-decrease{
-    color: rgb(245, 3, 80);
+    color: rgb(245, 3, 80) !important;
     font-weight: bold;
 }
 
@@ -362,7 +362,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: underline;
  }
 
  #dolar .card .card-text b {

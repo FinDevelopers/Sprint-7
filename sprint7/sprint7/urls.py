@@ -19,6 +19,8 @@ from Clientes import views as clientes
 from Login import views as login
 from Prestamos import views as prestamos
 from Tarjetas import views as tarjetas
+from Cuentas import views as cuentas
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', clientes.index, name="Index"),
@@ -30,6 +32,6 @@ urlpatterns = [
     path('', login.home , name="Home"),
     path('prestamos/', prestamos.prestamos, name="Prestamos"),
     path('tarjetas/', tarjetas.tarjetas, name="Tarjetas"),
-    path('formulario-tarjeta/', tarjetas.formulario, name="Formulario-tarjeta")
-
+    path('formulario-tarjeta/', tarjetas.formulario, name="Formulario-tarjeta"),
+    path('cuentas/', cuentas.movimientos, name="Movimientos"),
 ]

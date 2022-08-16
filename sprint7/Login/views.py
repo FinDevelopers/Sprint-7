@@ -31,9 +31,7 @@ def registration(request):
         form = (RegistrationForm(request.POST))
         print(form.errors)
         if form.is_valid():
-            user = User()
-            user.username = request.POST.get('username')
-            user.password = request.POST.get('password2')
+            user = form.save()
             user.first_name = request.POST.get('name')
             user.last_name = request.POST.get('surname')
             user.email = request.POST.get('mail')
@@ -67,10 +65,10 @@ def logout_view(request):
     #Acá se puede crear un template para cuando desloguea
     return redirect('Login')
     
-#Agregar css + imágenes del sprint 1 + js en static de clientes
-#En el index llamar a user.cliente.tarjetas.all() y mostrarlas en el div de las tarjetas, lo mismo con cuentas
-#En el form de prestamos, en la view despues del submit crear un Prestamo, y asignarle prestamo.type, prestamo.customer_id, etc. y hacer prestamo.save(), validar con user.client.client_type.get()
-#if cliente_type == 'BLack' and request.POST['monto'] > 500000 
-#Linkear todo en base.html
-#Verificar logout
-#Hacer la página de inicio
+
+
+
+"""user = User()
+            user.username = request.POST.get('username')
+            user.password = request.POST.get('password2')
+             """
