@@ -22,7 +22,7 @@ from Tarjetas import views as tarjetas
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', clientes.index, name="Index"),
-    path('formularios/', prestamos.formularios, name="Formularios"),
+    path('formularios-prestamo/', prestamos.formulario, name="Formulario"),
     path('accounts/',include('django.contrib.auth.urls')),
     path('logout/', login.logout_view , name="Logout"),
     path('login/', login.login_view , name="Login"),

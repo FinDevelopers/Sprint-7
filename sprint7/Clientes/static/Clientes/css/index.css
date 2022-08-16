@@ -171,6 +171,7 @@ body{
 
 .main-section .balance i{
     font-size: 5rem;
+    cursor: pointer;
 }
 
 .main-section .actions{
@@ -185,6 +186,7 @@ body{
 .actions-container a{
     text-decoration: none;
 }
+
 
 .actions-container .action{
     background: var(--p75);

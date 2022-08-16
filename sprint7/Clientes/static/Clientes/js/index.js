@@ -109,3 +109,20 @@ function minutosAMilsegundos(mins){
 updateDolarContainer();
 var intervalID = window.setInterval(updateDolarContainer,minutosAMilsegundos(10));
  
+
+
+//Ocultar Saldo
+let eye = d.getElementById('eye')
+eye.addEventListener('click', clickOnEye);
+function clickOnEye(){
+    h2_elements = document.querySelectorAll('#balance-container h2')
+    if (eye.className == 'bi bi-eye'){
+        eye.className = 'bi bi-eye-slash';
+        h2_elements[0].className = 'd-none';
+        h2_elements[1].className = '';
+    }else {
+        eye.className = 'bi bi-eye';
+        h2_elements[0].className = '';
+        h2_elements[1].className = 'd-none';
+    }
+}

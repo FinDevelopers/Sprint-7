@@ -8,7 +8,7 @@
 {%endblock links%}
 {%block content%}
 <form action="" method="POST"> {%csrf_token%}
-<div class="container Formulario">
+<div class="container Formulario pt-5">
   <div class="card">
     <div class="card-body">
       <h1 class="card-title  text-center">Pide un préstamo</h5>
@@ -23,3 +23,7 @@
 </div>
 </form>
 {%endblock content%}
+
+{%block scripts%}
+  <script src="{%static 'Prestamos/js/forumlario-prestamos.js'%}"></script>
+{%endblock scripts%}
